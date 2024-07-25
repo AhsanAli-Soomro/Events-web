@@ -1,4 +1,3 @@
-"use client"
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import dayjs from 'dayjs';
@@ -52,7 +51,7 @@ const DatePicker = () => {
 
     return (
         <div className="pt-16 pb-40">
-            <h1 className="text-3xl text-slate-900  text-center font-extrabold b-4 m-4">Pick a Date</h1>
+            <h1 className="text-3xl text-slate-900 text-center font-extrabold b-4 m-4">Pick a Date</h1>
             <div className=" flex flex-row justify-between border text-center p-4 gap-4 mb-4">
                 <button onClick={handlePrevMonth} className="mr-2 text-2xl font-extrabold">&lt;</button>
                 <select className='bg-slate-900 rounded-sm border p-4 w-full font-extrabold text-2xl text-white' value={currentDate.year()} onChange={handleYearChange}>
@@ -65,7 +64,6 @@ const DatePicker = () => {
                         <option className='bg-slate-900' key={month} value={month}>{dayjs().month(month).format('MMMM')}</option>
                     ))}
                 </select>
-
                 <button onClick={handleNextMonth} className="ml-2 text-2xl font-extrabold">&gt;</button>
             </div>
             <div className="grid grid-cols-7 ">
@@ -89,7 +87,6 @@ const DatePicker = () => {
                         </div>
                     );
                 })}
-
             </div>
         </div>
     );

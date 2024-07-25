@@ -1,11 +1,8 @@
-import React from "react";
-import Card from "./Card";
-import ServicesSection from "./ServicesSection";
-import ServicesSection2 from "./ServicesSection2";
+import ServicesSection from '@/components/ServicesSection';
+import ServicesSection2 from '@/components/ServicesSection2';
+import React from 'react';
 
-
-export default function Engage() {
-
+function Page() {
     const events = [
         {
             id: 1,
@@ -27,7 +24,6 @@ export default function Engage() {
         },
     ];
 
-
     return (
         <div className="p-8">
             <div className="text-slate-900 mt-10 text-3xl text-center font-extrabold b-4 m-4">Our Services</div>
@@ -44,3 +40,5 @@ export default function Engage() {
         </div>
     );
 }
+
+export default Page;
