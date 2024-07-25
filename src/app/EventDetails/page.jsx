@@ -1,10 +1,9 @@
-// pages/EventDetails/[date].jsx
-"use client"
-import React, { useState, useEffect } from 'react';
+"use client";
+import React, { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 
-const EventDetails = ({ params }) => {
+const EventDetailsContent = () => {
     const router = useRouter();
     const searchParams = useSearchParams();
     const index = searchParams.get('index');
@@ -39,7 +38,12 @@ const EventDetails = ({ params }) => {
             <button onClick={() => router.push('/Events')} className="px-6 py-3 mt-4 rounded-full bg-black hover:bg-slate-800 text-white transition duration-300">Back to Events</button>
         </div>
     );
-    
 };
+
+const EventDetails = () => (
+    <Suspense fallback={<div>Loading...</div>}>
+        <EventDetailsContent />
+    </Suspense>
+);
 
 export default EventDetails;
