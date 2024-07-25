@@ -1,18 +1,20 @@
-import Image from "next/image";
-import React from "react";
+import Image from 'next/image';
+import React from 'react';
+
 export default function Card({ title, description, img }) {
     return (
         <div className="max-w-sm border rounded-lg overflow-hidden shadow-lg bg-white">
             <div className="p-2 flex flex-col">
                 <div className="w-full mb-2 shadow-sm h-60 flex justify-center items-center overflow-hidden">
-                    <img
+                    <Image
                         src={img}
                         alt="Event Image"
+                        width={500}
+                        height={500}
                         className="w-full h-full object-cover transition-transform duration-300 ease-in-out transform hover:scale-110"
                     />
                 </div>
                 <div className="px-4 py-2 ">
-
                     <div className="font-bold text-xl line-clamp-1 mb-2">{title}</div>
                     <p className="text-gray-700 line-clamp-2 text-base">
                         {description}
@@ -33,6 +35,4 @@ export default function Card({ title, description, img }) {
             </div>
         </div>
     );
-
-
 }

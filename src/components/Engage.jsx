@@ -30,21 +30,16 @@ export default function Engage() {
 
     return (
         <div className="p-8">
-            <div className="text-3xl text-slate-900  text-center font-extrabold b-4 m-4">Our Services</div>
-            <ServicesSection/>
-            <ServicesSection2/>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            <div className="text-slate-900 mt-10 text-3xl text-center font-extrabold b-4 m-4">Our Services</div>
+            <ServicesSection />
+            <ServicesSection2 />
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {events.map((event) => (
-                    <Card
-                        key={event.id}
-                        title={event.title}
-                        description={event.description}
-                        img={event.img}
-                    />
+                    <div key={event.id}>
+                        <div className='text-2xl font-bold p-2'><span>{event.id}: </span>{event.title}</div>
+                        <div className='p-2'>{event.description}</div>
+                    </div>
                 ))}
-            </div>
-            <div>
-
             </div>
         </div>
     );

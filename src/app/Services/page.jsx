@@ -1,9 +1,8 @@
-
 import ServicesSection from '@/components/ServicesSection';
 import ServicesSection2 from '@/components/ServicesSection2';
-import React from 'react'
+import React from 'react';
 
-function page() {
+function Page() {
     const events = [
         {
             id: 1,
@@ -26,10 +25,10 @@ function page() {
         <div className="p-8">
             <div className="text-slate-900 mt-10 text-3xl text-center font-extrabold b-4 m-4">Our Services</div>
             <ServicesSection />
-            <ServicesSection2/>
-            <div className="sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <ServicesSection2 />
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {events.map((event) => (
-                    <div>
+                    <div key={event.id}>
                         <div className='text-2xl font-bold p-2'><span>{event.id}: </span>{event.title}</div>
                         <div className='p-2'>{event.description}</div>
                     </div>
@@ -39,4 +38,4 @@ function page() {
     );
 }
 
-export default page
+export default Page;

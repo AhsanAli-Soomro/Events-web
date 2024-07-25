@@ -55,16 +55,16 @@ const DatePicker = () => {
             <h1 className="text-3xl text-slate-900  text-center font-extrabold b-4 m-4">Pick a Date</h1>
             <div className=" flex flex-row justify-between border text-center p-4 gap-4 mb-4">
                 <button onClick={handlePrevMonth} className="mr-2 text-2xl font-extrabold">&lt;</button>
-                    <select className='bg-slate-900 rounded-sm border p-4 w-full font-extrabold text-2xl text-white' value={currentDate.year()} onChange={handleYearChange}>
-                        {Array.from({ length: 10 }, (_, i) => currentDate.year() - 5 + i).map(year => (
-                            <option key={year} value={year}>{year}</option>
-                        ))}
-                    </select>
-                    <select className='bg-slate-900 rounded-sm border p-4 w-full font-extrabold text-2xl text-white' value={currentDate.month()} onChange={handleMonthChange}>
-                        {Array.from({ length: 12 }, (_, i) => i).map(month => (
-                            <option className='bg-slate-900' key={month} value={month}>{dayjs().month(month).format('MMMM')}</option>
-                        ))}
-                    </select>
+                <select className='bg-slate-900 rounded-sm border p-4 w-full font-extrabold text-2xl text-white' value={currentDate.year()} onChange={handleYearChange}>
+                    {Array.from({ length: 10 }, (_, i) => currentDate.year() - 5 + i).map(year => (
+                        <option key={year} value={year}>{year}</option>
+                    ))}
+                </select>
+                <select className='bg-slate-900 rounded-sm border p-4 w-full font-extrabold text-2xl text-white' value={currentDate.month()} onChange={handleMonthChange}>
+                    {Array.from({ length: 12 }, (_, i) => i).map(month => (
+                        <option className='bg-slate-900' key={month} value={month}>{dayjs().month(month).format('MMMM')}</option>
+                    ))}
+                </select>
 
                 <button onClick={handleNextMonth} className="ml-2 text-2xl font-extrabold">&gt;</button>
             </div>
@@ -76,21 +76,20 @@ const DatePicker = () => {
                     const dateString = currentDate.date(day).toISOString().split('T')[0];
                     const eventSummary = getEventSummaryForDate(dateString);
                     return (
-                        <div className={`border p-2 text-center cursor-pointer hover:bg-slate-500 hover:text-white ${eventSummary ? 'bg-slate-900 text-white' : ''}`}>
+                        <div key={day} className={`border p-2 text-center cursor-pointer hover:bg-slate-500 hover:text-white ${eventSummary ? 'bg-slate-900 text-white' : ''}`}>
                             <div
-                                key={day}
                                 className='w-full'
                                 onClick={() => handleDateClick(dateString)}
                             >
                                 <div>{day}</div>
-
                             </div>
-                            <a className=' hover:underline' onClick={() => viewEvent()}>
+                            <a className='hover:underline' onClick={() => viewEvent()}>
                                 {eventSummary && <div className="mt-2 text-sm text-white">{eventSummary}</div>}
                             </a>
                         </div>
                     );
                 })}
+
             </div>
         </div>
     );
