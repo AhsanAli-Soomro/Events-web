@@ -1,3 +1,4 @@
+"use client";
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import dayjs from 'dayjs';
@@ -31,7 +32,7 @@ const DatePicker = () => {
 
     const startOfMonth = currentDate.startOf('month').day();
     const daysInMonth = currentDate.daysInMonth();
-    const daysArray = Array.from({ length: daysInMonth }, (_, i) => i + 1);
+    const daysArray = [...Array(daysInMonth).keys()].map(i => i + 1);
 
     const handlePrevMonth = () => {
         setCurrentDate(currentDate.subtract(1, 'month'));
@@ -55,19 +56,20 @@ const DatePicker = () => {
             <div className=" flex flex-row justify-between border text-center p-4 gap-4 mb-4">
                 <button onClick={handlePrevMonth} className="mr-2 text-2xl font-extrabold">&lt;</button>
                 <select className='bg-slate-900 rounded-sm border p-4 w-full font-extrabold text-2xl text-white' value={currentDate.year()} onChange={handleYearChange}>
-                    {Array.from({ length: 10 }, (_, i) => currentDate.year() - 5 + i).map(year => (
-                        <option key={year} value={year}>{year}</option>
-                    ))}
+                    {[...Array(10).keys()].map(i => {
+                        const year = currentDate.year() - 5 + i;
+                        return <option key={year} value={year}>{year}</option>;
+                    })}
                 </select>
                 <select className='bg-slate-900 rounded-sm border p-4 w-full font-extrabold text-2xl text-white' value={currentDate.month()} onChange={handleMonthChange}>
-                    {Array.from({ length: 12 }, (_, i) => i).map(month => (
+                    {[...Array(12).keys()].map(month => (
                         <option className='bg-slate-900' key={month} value={month}>{dayjs().month(month).format('MMMM')}</option>
                     ))}
                 </select>
                 <button onClick={handleNextMonth} className="ml-2 text-2xl font-extrabold">&gt;</button>
             </div>
             <div className="grid grid-cols-7 ">
-                {Array.from({ length: startOfMonth }).map((_, i) => (
+                {[...Array(startOfMonth).keys()].map(i => (
                     <div key={`empty-${i}`} className="p-2 text-center"></div>
                 ))}
                 {daysArray.map(day => {
